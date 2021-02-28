@@ -12,5 +12,9 @@
     "postgresql"
   ],
   "author": "jfdelarosa",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.5.0"
+  }
 }
