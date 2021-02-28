@@ -1,11 +1,14 @@
 const express = require("express");
+const config = require("./config");
+const loaders = require("./loaders");
 
 async function startServer() {
   const app = express();
 
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-    console.log(`Running on port: ${port}`);
+  await loaders(app);
+
+  app.listen(config.port, () => {
+    console.log(`Running on port: ${config.port}`);
   });
 
   app.on("error", (err) => {
