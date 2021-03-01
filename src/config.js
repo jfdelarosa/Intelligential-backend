@@ -21,4 +21,5 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     dialect: "postgres",
   },
+  salt_factor: 10,
 };
