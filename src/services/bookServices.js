@@ -38,7 +38,7 @@ const bookServices = {
 
       return await book.update(body);
     } catch (error) {
-      next(error);
+      throw new Error(error);
     }
   },
   remove: async (id) => {
