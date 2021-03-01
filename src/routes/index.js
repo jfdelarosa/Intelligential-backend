@@ -1,11 +1,16 @@
 const { Router } = require("express");
 
-const user = require("./usersRoutes");
+const book = require("./bookRoutes");
+const user = require("./userRoutes");
 
 const initRoutes = () => {
   const app = Router();
 
-  user(app);
+  const routes = [book, user];
+
+  routes.forEach((route) => {
+    route(app);
+  });
 
   return app;
 };
