@@ -9,7 +9,7 @@ const db = {};
 let sequelize = new Sequelize(config.db.name, config.db.user, config.db.pass, {
   dialect: config.db.dialect,
 });
-console.log({ basename });
+
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
