@@ -11,9 +11,23 @@ const BookModel = ({ sequelize, DataTypes }) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      description: {
+        type: DataTypes.STRING,
+      },
+      author: {
+        type: DataTypes.STRING,
+      },
     },
     {}
   );
+
+  Book.associate = (models) => {
+    Book.belongsToMany(models.Loan, {
+      through: "BookLoan",
+      foreignKey: "bookId",
+      as: "loans",
+    });
+  };
 
   return Book;
 };
