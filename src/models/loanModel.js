@@ -1,21 +1,30 @@
 const LoanModel = ({ Sequelize, sequelize, DataTypes }) => {
-  const Loan = sequelize.define("Loan", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const Loan = sequelize.define(
+    "Loan",
+    {
+      id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      startDate: {
+        type: DataTypes.DATEONLY,
+        default: Sequelize.NOW,
+      },
+      endDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
     },
-    startDate: {
-      type: DataTypes.DATEONLY,
-      default: Sequelize.NOW,
-    },
-    endDate: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
-  });
+    {}
+  );
 
   Loan.associate = (models) => {
-    Loan.hasMany(models.Book);
+    Loan.belongsToMany(models.Book, {
+      through: "BookLoan",
+      foreignKey: "loanId",
+      as: "books",
+    });
   };
 
   return Loan;
