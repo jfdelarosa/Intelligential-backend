@@ -8,6 +8,12 @@ const db = {};
 
 let sequelize = new Sequelize(config.db.connection_url, {
   dialect: config.db.dialect,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 fs.readdirSync(__dirname)
