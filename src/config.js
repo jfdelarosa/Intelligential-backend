@@ -1,12 +1,12 @@
-const dotenv = require("dotenv");
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv");
+  const env = dotenv.config();
+  if (env.error) {
+    throw new Error("Not .env file found");
+  }
+}
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
-const env = dotenv.config();
-
-if (env.error) {
-  throw new Error("Not .env file found");
-}
 
 module.exports = {
   env: process.env.NODE_ENV,
