@@ -21,7 +21,7 @@ module.exports = {
   db: {
     connection_url:
       process.env.NODE_ENV === "production"
-        ? `${process.env.DATABASE_URL}?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory`
+        ? `${process.env.DATABASE_URL}?ssl=true`
         : process.env.DATABASE_URL,
     dialect: "postgres",
   },
