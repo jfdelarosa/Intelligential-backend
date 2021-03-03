@@ -21,6 +21,7 @@ const authServices = {
       const isMatch = await user.comparePasswords(password);
 
       if (isMatch) {
+        delete user.password;
         return user;
       }
 

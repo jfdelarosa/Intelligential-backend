@@ -1,4 +1,6 @@
+const jwt = require("jsonwebtoken");
 const authServices = require("../services/authServices");
+const config = require("../config");
 
 const authControllers = {
   register: async (req, res, next) => {
@@ -14,7 +16,11 @@ const authControllers = {
     try {
       const user = await authServices.login(req.body);
 
-      return res.status(200).json(user);
+      const token = jwt.sign({ user }, config.jwt.secret, {
+        expiresIn: config.jwt.expiration,
+      });
+
+      return res.status(200).json({ token });
     } catch (error) {
       next(error);
     }
