@@ -21,10 +21,7 @@ module.exports = {
     expiration: 172800,
   },
   db: {
-    connection_url:
-      process.env.NODE_ENV !== "development"
-        ? `${process.env.DATABASE_URL}?ssl=require`
-        : process.env.DATABASE_URL,
+    connection_url: process.env.DATABASE_URL,
     dialect: "postgres",
   },
   salt_factor: 10,
