@@ -6,7 +6,7 @@ const config = require("../config");
 const basename = path.basename(__filename);
 const db = {};
 
-let sequelize = new Sequelize(config.db.name, config.db.user, config.db.pass, {
+let sequelize = new Sequelize(config.db.connection_url, {
   dialect: config.db.dialect,
 });
 
