@@ -10,15 +10,16 @@ if (env.error) {
 
 module.exports = {
   env: process.env.NODE_ENV,
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 8000,
   api: {
     prefix: "/api/v1",
   },
+  jwt: {
+    secret: process.env.SECRET,
+    expiration: 172800,
+  },
   db: {
-    name: process.env.DATABASE_NAME,
-    user: process.env.DATABASE_USER,
-    pass: process.env.DATABASE_PASS,
-    host: process.env.DATABASE_HOST,
+    connection_url: process.env.DATABASE_URL,
     dialect: "postgres",
   },
   salt_factor: 10,
