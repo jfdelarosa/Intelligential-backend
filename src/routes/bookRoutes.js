@@ -8,6 +8,7 @@ const routes = (app) => {
 
   route.post("/", bookControllers.create);
   route.get("/", bookControllers.list);
+  route.get("/search", bookControllers.search);
   route.get("/:id", bookControllers.find);
   route.put("/:id", bookControllers.update);
   route.delete("/:id", bookControllers.remove);

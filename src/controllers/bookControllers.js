@@ -32,6 +32,13 @@ const bookControllers = {
       next(error);
     }
   },
+  search: async (req, res, next) => {
+    const { q } = req.query;
+
+    const books = await bookServices.search(q);
+
+    return res.status(200).json(books);
+  },
   update: async (req, res, next) => {
     const { id } = req.params;
 

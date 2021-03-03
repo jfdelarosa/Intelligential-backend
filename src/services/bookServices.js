@@ -1,7 +1,15 @@
-const { Book } = require("../models");
+const { Op } = require("sequelize");
+const { Book, Loan, BookLoan } = require("../models");
 
 const findBook = async (id) => {
-  const book = await Book.findByPk(id);
+  const book = await Book.findByPk(id, {
+    include: [
+      {
+        model: Loan,
+        as: "loans",
+      },
+    ],
+  });
 
   if (!book) {
     throw new Error("Book not found");
@@ -32,6 +40,15 @@ const bookServices = {
       throw new Error(error);
     }
   },
+  search: async (query) => {
+    return await Book.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${query}%`,
+        },
+      },
+    });
+  },
   update: async (id, body) => {
     try {
       const book = await findBook(id);
@@ -44,6 +61,8 @@ const bookServices = {
   remove: async (id) => {
     try {
       const book = await findBook(id);
+
+      await BookLoan.destroy({ where: { bookId: id } });
 
       return await book.destroy();
     } catch (error) {
