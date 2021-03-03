@@ -23,7 +23,7 @@ module.exports = {
   db: {
     connection_url:
       process.env.NODE_ENV !== "development"
-        ? `${process.env.DATABASE_URL}?ssl=true`
+        ? `${process.env.DATABASE_URL}?ssl=require`
         : process.env.DATABASE_URL,
     dialect: "postgres",
   },
