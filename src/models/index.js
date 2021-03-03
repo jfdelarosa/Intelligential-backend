@@ -13,7 +13,6 @@ const sequelizeConfig = {
 if (config.env !== "development") {
   config.dialectOptions = {
     ssl: {
-      require: true,
       rejectUnauthorized: false,
     },
   };
