@@ -8,6 +8,8 @@ if (process.env.NODE_ENV !== "production") {
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
+console.log(process.env.NODE_ENV);
+
 module.exports = {
   env: process.env.NODE_ENV,
   port: process.env.PORT || 8000,
@@ -20,7 +22,7 @@ module.exports = {
   },
   db: {
     connection_url:
-      process.env.NODE_ENV === "production"
+      process.env.NODE_ENV !== "development"
         ? `${process.env.DATABASE_URL}?ssl=true`
         : process.env.DATABASE_URL,
     dialect: "postgres",
