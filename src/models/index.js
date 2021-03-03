@@ -10,14 +10,6 @@ const sequelizeConfig = {
   dialect: config.db.dialect,
 };
 
-if (config.env !== "development") {
-  config.dialectOptions = {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  };
-}
-
 let sequelize = new Sequelize(config.db.connection_url, sequelizeConfig);
 
 fs.readdirSync(__dirname)
