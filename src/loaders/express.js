@@ -1,8 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const routes = require("../routes");
 const config = require("../config");
 
 const expressLoader = async (app) => {
+  app.use(cors());
+
   app.use(express.json({ extended: true }));
 
   app.use(config.api.prefix, routes());
