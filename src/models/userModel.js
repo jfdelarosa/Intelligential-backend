@@ -13,11 +13,12 @@ const UserModel = ({ sequelize, DataTypes }) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       role: {
         type: DataTypes.STRING,
         allowNull: false,
-        default: "reader",
+        default: "lector",
       },
       password: {
         type: DataTypes.STRING,

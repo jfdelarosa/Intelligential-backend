@@ -1,13 +1,14 @@
 const { Router } = require("express");
+const userControllers = require("../controllers/userControllers");
 
 const route = Router();
 
 const routes = (app) => {
   app.use("/users", route);
 
-  route.get("/", (req, res, next) => {
-    return res.status(200).json({ hello: "world" });
-  });
+  route.get("/", userControllers.list);
+  route.get("/:id", userControllers.find);
+  route.put("/:id", userControllers.update);
 };
 
 module.exports = routes;
