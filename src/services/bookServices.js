@@ -19,9 +19,9 @@ const findBook = async (id) => {
 };
 
 const bookServices = {
-  create: async ({ name }) => {
+  create: async (body) => {
     try {
-      return await Book.create({ name });
+      return await Book.create(body);
     } catch (error) {
       throw new Error(error);
     }
