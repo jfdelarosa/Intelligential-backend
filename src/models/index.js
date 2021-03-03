@@ -6,15 +6,20 @@ const config = require("../config");
 const basename = path.basename(__filename);
 const db = {};
 
-let sequelize = new Sequelize(config.db.connection_url, {
+const sequelizeConfig = {
   dialect: config.db.dialect,
-  dialectOptions: {
+};
+
+if (config.env !== "development") {
+  config.dialectOptions = {
     ssl: {
       require: true,
       rejectUnauthorized: false,
     },
-  },
-});
+  };
+}
+
+let sequelize = new Sequelize(config.db.connection_url, sequelizeConfig);
 
 fs.readdirSync(__dirname)
   .filter((file) => {
