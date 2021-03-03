@@ -1,5 +1,5 @@
 const models = require("../models");
 
 module.exports = sequelizeLoader = async () => {
-  await models.sequelize.sync({ force: true });
+  await models.sequelize.sync({ alter: true });
 };
