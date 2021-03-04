@@ -9,11 +9,15 @@ const LoanModel = ({ Sequelize, sequelize, DataTypes }) => {
       },
       startDate: {
         type: DataTypes.DATEONLY,
-        default: Sequelize.NOW,
       },
       endDate: {
         type: DataTypes.DATEONLY,
-        allowNull: false,
+      },
+      approved: {
+        type: DataTypes.BOOLEAN,
+      },
+      returned: {
+        type: DataTypes.BOOLEAN,
       },
     },
     {}
@@ -25,6 +29,8 @@ const LoanModel = ({ Sequelize, sequelize, DataTypes }) => {
       foreignKey: "loanId",
       as: "books",
     });
+
+    Loan.belongsTo(models.User, { foreignKey: "userId", as: "user" });
   };
 
   return Loan;

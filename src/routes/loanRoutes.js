@@ -8,7 +8,10 @@ const routes = (app) => {
   app.use("/loans", route);
 
   route.get("/", authMiddleware, loanControllers.list);
+  route.get("/type", authMiddleware, loanControllers.listByType);
+  route.get("/my", authMiddleware, loanControllers.listByUser);
   route.post("/", authMiddleware, loanControllers.create);
+  route.put("/:id", authMiddleware, loanControllers.update);
 };
 
 module.exports = routes;
