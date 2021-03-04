@@ -15,6 +15,9 @@ const UserModel = ({ sequelize, DataTypes }) => {
         allowNull: false,
         unique: true,
       },
+      name: {
+        type: DataTypes.STRING,
+      },
       role: {
         type: DataTypes.STRING,
         allowNull: false,
