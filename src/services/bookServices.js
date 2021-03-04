@@ -46,6 +46,8 @@ const bookServices = {
         name: {
           [Op.iLike]: `%${query}%`,
         },
+        stock: true,
+        active: true,
       },
     });
   },
@@ -62,7 +64,7 @@ const bookServices = {
     try {
       const book = await findBook(id);
 
-      await BookLoan.destroy({ where: { bookId: id } });
+      await BookLoan.update({ active: false }, { where: { bookId: id } });
 
       return await book.destroy();
     } catch (error) {

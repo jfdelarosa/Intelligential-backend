@@ -3,9 +3,15 @@ const bookServices = require("../services/bookServices");
 const bookControllers = {
   create: async (req, res, next) => {
     try {
-      const { name, description } = req.body;
+      const { author, name, description } = req.body;
 
-      const book = await bookServices.create({ name, description });
+      const book = await bookServices.create({
+        author,
+        name,
+        description,
+        stock: true,
+        active: true,
+      });
 
       return res.status(201).json(book);
     } catch (error) {

@@ -17,6 +17,13 @@ const BookModel = ({ sequelize, DataTypes }) => {
       author: {
         type: DataTypes.STRING,
       },
+      active: {
+        type: DataTypes.BOOLEAN,
+      },
+      stock: {
+        type: DataTypes.BOOLEAN,
+        default: 1,
+      },
     },
     {}
   );
