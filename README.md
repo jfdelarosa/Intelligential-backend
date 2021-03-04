@@ -11,6 +11,7 @@ Debido al tiempo reducido, tuve que hacer algunas elecciones que me ayudaron a g
 - Decidí agrupar los servicios y controladores de cada entidad en un solo archivo (ej: `controllers/userControllers.js` en vez de `controllers/user/*.js`).
 - No usé loggers (usualmente utilizo [winston](https://github.com/winstonjs/winston) y [morgan](https://github.com/expressjs/morgan)).
 - No usé un validador adicional para el body de las peticiones (Acostumbro usar [Celebrate](https://github.com/arb/celebrate)).
+- No se comprueban los permisos del usuario que hace la petición
 
 ## Correr la app de forma local
 
