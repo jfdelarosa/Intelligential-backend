@@ -21,7 +21,7 @@ const authMiddleware = (req, res, next) => {
         if (!decoded.user) {
           throw new Error("User null");
         }
-        req.user_id = decoded.user._id;
+        req.user_id = decoded.user.id;
         next();
       }
     });

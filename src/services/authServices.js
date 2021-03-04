@@ -3,6 +3,7 @@ const { User } = require("../models");
 const authServices = {
   register: async (body) => {
     try {
+      console.log({ body });
       return await User.create(body);
     } catch (error) {
       throw new Error(error);

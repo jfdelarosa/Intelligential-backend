@@ -21,6 +21,13 @@ const userControllers = {
       next(error);
     }
   },
+  findMe: async (req, res, next) => {
+    const { user_id } = req;
+
+    const user = await userServices.find(user_id);
+
+    return res.status(200).json(user);
+  },
   update: async (req, res, next) => {
     try {
       const { id } = req.params;

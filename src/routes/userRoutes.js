@@ -8,6 +8,7 @@ const routes = (app) => {
   app.use("/users", route);
 
   route.get("/", authMiddleware, userControllers.list);
+  route.get("/me", authMiddleware, userControllers.findMe);
   route.get("/:id", authMiddleware, userControllers.find);
   route.put("/:id", authMiddleware, userControllers.update);
 };
